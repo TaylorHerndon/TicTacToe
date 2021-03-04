@@ -4,7 +4,15 @@
 
     Sub StartupSettings() Handles Me.Activated
 
-        GameModeComboBox.SelectedItem = "Player Vs Player"
+        Static runCount As Integer
+
+        If runCount = 0 Then
+
+            GameModeComboBox.SelectedItem = "Player Vs Player"
+
+        End If
+
+        runCount += 1
 
     End Sub
 
@@ -168,6 +176,8 @@
     End Sub
 
     Sub GameModeSelectionChange() Handles GameModeComboBox.SelectedValueChanged
+
+        ClearBoard()
 
         'Change the game mode description box to the coresponding blurb every time the game mode box value changes
         Select Case GameModeComboBox.SelectedItem
